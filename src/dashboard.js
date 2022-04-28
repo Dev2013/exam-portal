@@ -13,7 +13,7 @@ const Dashboard = ({ isAuthorized }) => {
     <div
       style={{
         width: "100%",
-        height: "100vh",
+        height: "95vh",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

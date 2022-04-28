@@ -33,7 +33,7 @@ function App() {
         </div>
       <nav className="navbar navbar-expand-lg navbar-light fixed-top">
         <div className="container" style={{backgroundColor:"#FFF"}}>
-          <Link className="navbar-brand" to={"/Dashboard"}><img src="./3.svg.svg" height={35} width="70" /> BDCOE</Link>
+          <Link className="navbar-brand" to={"/Dashboard"}><img src="./3.svg.svg" height={30} width="70" /> BDCOE</Link>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul className="navbar-nav ml-auto">
             </ul>

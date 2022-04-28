@@ -2,7 +2,7 @@ export const ques = [
   {
     id: 2438,
     question: "How many balls are their in picture?",
-    hasImage: true,
+    hasImage: false,
     imageUrl: "https://phd-data-bucket1.s3.amazonaws.com/6-grade/1.jpg",
     moduleType: "MODULE_2",
     ageCategory: "AGE_SIX",
@@ -38,7 +38,7 @@ export const ques = [
   {
     id: 2444,
     question: "Count Nos of Pencils",
-    hasImage: true,
+    hasImage: false,
     imageUrl: "https://phd-data-bucket1.s3.amazonaws.com/6-grade/2.jpg",
     moduleType: "MODULE_2",
     ageCategory: "AGE_SIX",
@@ -74,7 +74,7 @@ export const ques = [
   {
     id: 2450,
     question: "What is the denomination of this coin",
-    hasImage: true,
+    hasImage: false,
     imageUrl: "https://phd-data-bucket1.s3.amazonaws.com/6-grade/3.svg",
     moduleType: "MODULE_2",
     ageCategory: "AGE_SIX",
@@ -110,7 +110,7 @@ export const ques = [
   {
     id: 2456,
     question: "Which of the following option has 5 rupees note?",
-    hasImage: true,
+    hasImage: false,
     imageUrl: "https://phd-data-bucket1.s3.amazonaws.com/6-grade/4.jpg",
     moduleType: "MODULE_2",
     ageCategory: "AGE_SIX",
@@ -218,7 +218,7 @@ export const ques = [
   {
     id: 2474,
     question: "Identify the picture from the option with 4 cherries ",
-    hasImage: true,
+    hasImage: false,
     imageUrl: "https://phd-data-bucket1.s3.amazonaws.com/6-grade/7.jpg",
     moduleType: "MODULE_2",
     ageCategory: "AGE_SIX",
@@ -254,7 +254,7 @@ export const ques = [
   {
     id: 2480,
     question: "Identify the tray from options with 8 eggs",
-    hasImage: true,
+    hasImage: false,
     imageUrl: "https://phd-data-bucket1.s3.amazonaws.com/6-grade/8.jpg",
     moduleType: "MODULE_2",
     ageCategory: "AGE_SIX",
@@ -290,7 +290,7 @@ export const ques = [
   {
     id: 2486,
     question: "How Many fishes are their in a picture?",
-    hasImage: true,
+    hasImage: false,
     imageUrl: "https://phd-data-bucket1.s3.amazonaws.com/6-grade/9.jpg",
     moduleType: "MODULE_2",
     ageCategory: "AGE_SIX",
@@ -326,7 +326,7 @@ export const ques = [
   {
     id: 2492,
     question: "How Many Circles are their?",
-    hasImage: true,
+    hasImage: false,
     imageUrl: "https://phd-data-bucket1.s3.amazonaws.com/6-grade/10.jpg",
     moduleType: "MODULE_2",
     ageCategory: "AGE_SIX",
@@ -542,7 +542,7 @@ export const ques = [
   {
     id: 2528,
     question: "How many are their together",
-    hasImage: true,
+    hasImage: false,
     imageUrl: "https://phd-data-bucket1.s3.amazonaws.com/6-grade/16.jpg",
     moduleType: "MODULE_2",
     ageCategory: "AGE_SIX",
@@ -578,7 +578,7 @@ export const ques = [
   {
     id: 2534,
     question: "How many are these together",
-    hasImage: true,
+    hasImage: false,
     imageUrl: "https://phd-data-bucket1.s3.amazonaws.com/6-grade/17.jpg",
     moduleType: "MODULE_2",
     ageCategory: "AGE_SIX",
@@ -722,7 +722,7 @@ export const ques = [
   {
     id: 2558,
     question: "Add and answer",
-    hasImage: true,
+    hasImage: false,
     imageUrl: "https://phd-data-bucket1.s3.amazonaws.com/6-grade/21.jpg",
     moduleType: "MODULE_2",
     ageCategory: "AGE_SIX",
@@ -758,7 +758,7 @@ export const ques = [
   {
     id: 2564,
     question: "Add and answer",
-    hasImage: true,
+    hasImage: false,
     imageUrl: "https://phd-data-bucket1.s3.amazonaws.com/6-grade/22.jpg",
     moduleType: "MODULE_2",
     ageCategory: "AGE_SIX",
@@ -794,7 +794,7 @@ export const ques = [
   {
     id: 2570,
     question: "Add and answer",
-    hasImage: true,
+    hasImage: false,
     imageUrl: "https://phd-data-bucket1.s3.amazonaws.com/6-grade/23.svg",
     moduleType: "MODULE_2",
     ageCategory: "AGE_SIX",
@@ -830,7 +830,7 @@ export const ques = [
   {
     id: 2576,
     question: "Subtract the following",
-    hasImage: true,
+    hasImage: false,
     imageUrl: "https://phd-data-bucket1.s3.amazonaws.com/6-grade/24.jpg",
     moduleType: "MODULE_2",
     ageCategory: "AGE_SIX",
@@ -866,7 +866,7 @@ export const ques = [
   {
     id: 2582,
     question: "Subtract the following",
-    hasImage: true,
+    hasImage: false,
     imageUrl: "https://phd-data-bucket1.s3.amazonaws.com/6-grade/25.jpg",
     moduleType: "MODULE_2",
     ageCategory: "AGE_SIX",
@@ -902,7 +902,7 @@ export const ques = [
   {
     id: 2588,
     question: "Subtract the following",
-    hasImage: true,
+    hasImage: false,
     imageUrl: "https://phd-data-bucket1.s3.amazonaws.com/6-grade/26.jpg",
     moduleType: "MODULE_2",
     ageCategory: "AGE_SIX",
@@ -938,7 +938,7 @@ export const ques = [
   {
     id: 2594,
     question: "Which has more?",
-    hasImage: true,
+    hasImage: false,
     imageUrl: "https://phd-data-bucket1.s3.amazonaws.com/6-grade/27.jpg",
     moduleType: "MODULE_2",
     ageCategory: "AGE_SIX",
@@ -966,7 +966,7 @@ export const ques = [
   {
     id: 2598,
     question: "Which has fewer?",
-    hasImage: true,
+    hasImage: false,
     imageUrl: "https://phd-data-bucket1.s3.amazonaws.com/6-grade/28.jpg",
     moduleType: "MODULE_2",
     ageCategory: "AGE_SIX",

@@ -11,6 +11,8 @@ const Footer = () => {
 }
 
 const Wrapper = styled.footer`
+  ${'' /* max-height : 500px;
+  overflow :scroll ; */}
   height: 3rem;
   display: flex;
   flex-direction: column;

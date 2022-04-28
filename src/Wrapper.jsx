@@ -12,7 +12,7 @@ export const Wrapper = ({ isAuthorized }) => {
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
 
   useEffect(() => {
-    setFinalState({ data: ques, loading: false, attempt: 2 });
+    setFinalState({ data: ques, loading: false, attempt: 1 });
   }, []);
   // useEffect(() => {
   //   fetch(
@@ -134,7 +134,7 @@ export const Wrapper = ({ isAuthorized }) => {
         };
       }),
       quizSynopsis:
-        " In 1971, the first ever computer virus was developed. Named Creeper, it was made as an experiment just to see how it spread between computers. The virus simply displayed the message: “I’m the creeper, catch me if you can!”",
+        " FACT- In 1971, the first ever computer virus was developed. Named Creeper, it was made as an experiment just to see how it spread between computers. The virus simply displayed the message: “I’m the creeper, catch me if you can!”",
       quizTitle: `Basic Aptitude `,
       attempt: `Attempts:  ${finalState?.attempt || 0 / 0} `,
     };
@@ -161,9 +161,10 @@ export const Wrapper = ({ isAuthorized }) => {
       <div
         style={{
           width: "100%",
-          backgroundImage: `url(/4.jpg)`,
-          backgroundColor: "#18546e",
-          height: "calc(95vh - 40px)",
+          // backgroundImage: `url(/4.jpg)`,
+          backgroundColor: "#fff",
+          height: "calc(100vh + 40px)",
+          overflow :"hidden",
         }}
       >
         {showAert && (
@@ -210,11 +211,11 @@ export const Wrapper = ({ isAuthorized }) => {
             width: "100%",
             overflow: "overlay",
             display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "white",
-            marginTop: "55px",
+            flexDirection: "row",
+            justifyContent: "left",
+            alignItems: "left",
+            backgroundColor: " #fff",
+            marginTop: "65px",
           }}
         >
           {!finalState?.loading && renderSectionOne()}
