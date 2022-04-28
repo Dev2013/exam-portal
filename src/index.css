@@ -7,7 +7,7 @@ body {
   background: #18546e !important;
   min-height: 100vh;
   display: flex;
-  font-weight: 400;
+  font-weight: 500;
   font-family: 'Fira Sans', sans-serif;
 }
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
@@ -58,7 +58,7 @@ body, html, .App, #root, .auth-wrapper {
 .auth-wrapper h3 {
   text-align: center;
   margin: 0;
-  line-height: 1;
+  line-height: 2;
   padding-bottom: 10px;
 }
 

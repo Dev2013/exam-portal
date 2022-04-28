@@ -30,7 +30,7 @@ export default function Login ({setIsAuthorized}) {
     }
         return (
           <>
-          <div style={{backgroundColor:"#18546e",width:"100%",height:"calc(90vh - 5px)"}}>
+          <div style={{backgroundColor:"#18546e",width:"100%",height:"calc(90vh + 30px)"}}>
         
             <div className="auth-inner" >
             <form noValidate onSubmit={handleSubmit} style={{overflow : "hidden"}}>
