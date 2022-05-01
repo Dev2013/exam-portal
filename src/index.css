@@ -27,7 +27,7 @@ body, html, .App, #root, .auth-wrapper {
 
 .navbar-light {
   background-color: #fff;
-  box-shadow: 1px 14px 400px rgb(3, 98, 175);
+  box-shadow: 1px 14px 250px rgb(3, 98, 175);
 }
 
 .auth-wrapper {

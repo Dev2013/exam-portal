@@ -105,7 +105,7 @@ const Quiz = function ({
   };
 
   return (
-    <div className="react-quiz-container">
+    <div className="react-quiz-container" style={{width:'100%'}}>
       {!start
           && (
           <div>
@@ -137,6 +137,8 @@ const Quiz = function ({
           showInstantFeedback={showInstantFeedback}
           continueTillCorrect={continueTillCorrect}
           appLocale={appLocale}
+          tabSwitched={rest.tabSwitched}
+          setTabSwitched={rest.setTabSwitched}
           {...rest}
         />
       )}

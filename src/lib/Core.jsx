@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback, Fragment } from "react";
 import QuizResultFilter from "./core-components/QuizResultFilter";
 import { checkAnswer, rawMarkup } from "./core-components/helpers";
-import InstantFeedback from "./core-components/InstantFeedback";
 import Explanation from "./core-components/Explanation";
-import { useStopwatch } from "react-timer-hook";
+import Alert from "react-bootstrap/Alert";
+import { Timer } from "./core-components/timer";
 
 const Core = function ({
   questions,
@@ -15,6 +15,7 @@ const Core = function ({
   continueTillCorrect,
   onEachQuestionChange,
   isShowTimer,
+  tabSwitched,
 }) {
   const [incorrectAnswer, setIncorrectAnswer] = useState(false);
   const [correctAnswer, setCorrectAnswer] = useState(false);
@@ -36,12 +37,16 @@ const Core = function ({
   const [question, setQuestion] = useState(questions[currentQuestionIndex]);
   const [questionSummary, setQuestionSummary] = useState(undefined);
   const [time, setTime] = useState([]);
-  const [nextClicked,setISNextClicked] = useState(0)
+  const [nextClicked, setISNextClicked] = useState(0);
 
+  useEffect(() => {
+    if (tabSwitched >= 2) {
+      setEndQuiz(true);
+      onComplete(questionSummary);
+    }
+  }, [tabSwitched]);
 
-  const { seconds, minutes, hours, days, reset } = useStopwatch({
-    autoStart: isShowTimer,
-  });
+  console.log(tabSwitched);
 
   useEffect(() => {
     setShowDefaultResult(
@@ -54,7 +59,7 @@ const Core = function ({
   }, [currentQuestionIndex]);
 
   useEffect(() => {
-    const { answerSelectionType='single' } = question;
+    const { answerSelectionType = "single" } = question;
     // Default single to avoid code breaking due to automatic version upgrade
     setAnswerSelectionType(answerSelectionType || "single");
   }, [question, currentQuestionIndex]);
@@ -91,7 +96,15 @@ const Core = function ({
       correctPoints,
       time,
     });
-  }, [totalPoints, correctPoints, questions, correct.length, incorrect.length, userInput, time]);
+  }, [
+    totalPoints,
+    correctPoints,
+    questions,
+    correct.length,
+    incorrect.length,
+    userInput,
+    time,
+  ]);
 
   useEffect(() => {
     if (endQuiz && onComplete !== undefined && questionSummary !== undefined) {
@@ -100,7 +113,7 @@ const Core = function ({
   }, [endQuiz, questionSummary]);
 
   const nextQuestion = (currentQuestionIndex) => {
-    setISNextClicked(prev=>prev+1)
+    setISNextClicked((prev) => prev + 1);
     // setQuestionSummary({);
     onEachQuestionChange({
       numberOfQuestions: questions.length,
@@ -110,7 +123,7 @@ const Core = function ({
       userInput,
       totalPoints,
       correctPoints,
-      time
+      time,
     });
     setIncorrectAnswer(false);
     setCorrectAnswer(false);
@@ -258,32 +271,36 @@ const Core = function ({
     // Default single to avoid code breaking due to automatic version upgrade
     answerSelectionType = answerSelectionType || "single";
 
-    return answers.map((answer, index) => (
-      <Fragment key={index}>
-        {buttons[index] !== undefined ? (
-          <button
-            disabled={false}
-            className={`${buttons[index].className} answerBtn btn`}
-            onClick={() => onClickAnswer(answer?.choice)}
-          >
-            {questionType === "text" && <span>{answer?.choice}</span>}
-            {questionType === "photo" && (
-              <img src={answer?.choice} alt="image" />
+    return (
+      <div style={{ width: "60%" }}>
+        {answers.map((answer, index) => (
+          <Fragment key={index}>
+            {buttons[index] !== undefined ? (
+              <button
+                disabled={false}
+                className={`${buttons[index].className} answerBtn btn`}
+                onClick={() => onClickAnswer(answer?.choice)}
+              >
+                {questionType === "text" && <span>{answer?.choice}</span>}
+                {questionType === "photo" && (
+                  <img src={answer?.choice} alt="image" />
+                )}
+              </button>
+            ) : (
+              <button
+                onClick={() => onClickAnswer(answer?.choice)}
+                className="answerBtn btn"
+              >
+                {questionType === "text" && answer?.choice}
+                {questionType === "photo" && (
+                  <img src={answer?.choice} alt="image" />
+                )}
+              </button>
             )}
-          </button>
-        ) : (
-          <button
-            onClick={() => onClickAnswer(answer?.choice)}
-            className="answerBtn btn"
-          >
-            {questionType === "text" && answer?.choice}
-            {questionType === "photo" && (
-              <img src={answer?.choice} alt="image" />
-            )}
-          </button>
-        )}
-      </Fragment>
-    ));
+          </Fragment>
+        ))}
+      </div>
+    );
   };
 
   const renderTags = (answerSelectionType, numberOfSelection, segment) => {
@@ -337,9 +354,15 @@ const Core = function ({
   );
 
   return (
-    <div className="questionWrapper">
+    <div className="questionWrapper" style={{ width: "100%", padding: "20px" }}>
       {!endQuiz && (
         <div className="questionWrapperBody">
+          {tabSwitched >= 1 && (
+            <Alert variant={"danger"}>
+              {`${tabSwitched} / 1
+            !!After 2 tab switch your Test will automatically submit`}
+            </Alert>
+          )}
           <div className="questionModal">
             {/* <InstantFeedback
               question={question}
@@ -351,44 +374,69 @@ const Core = function ({
           <div>
             {appLocale.question} {currentQuestionIndex + 1}:
           </div>
-          <h3
-            dangerouslySetInnerHTML={rawMarkup(question && question.question)}
+          <Timer
+            isShowTimer={isShowTimer}
+            setEndQuiz={setEndQuiz}
+            onComplete={onComplete}
+            questionSummary={questionSummary}
           />
-          {question && question.questionPic && (
-            <img src={question.questionPic} alt="image"  width="500px" height="500px" />
-          )}
-          {/* {question && renderTags(answerSelectionTypeState, question.correctAnswer.length, question.segment)} */}
           <div
             style={{
               display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              height: "50px",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
             }}
           >
-            <span>{days}</span>:<span>{hours}</span>:<span>{minutes}</span>:
-            <span>{seconds}</span>{" "}
+            <h3
+              style={{
+                width: "40%",
+                alignSelf: "flex-start",
+                textAlign: "left",
+                wordBreak: "break-all",
+              }}
+              dangerouslySetInnerHTML={rawMarkup(question && question.question)}
+            />
+
+            {question && question.questionPic && (
+              <img
+                src={question.questionPic}
+                alt="image"
+                width="500px"
+                height="500px"
+              />
+            )}
+            {/* {question && renderTags(answerSelectionTypeState, question.correctAnswer.length, question.segment)} */}
+            {question && renderAnswers(question, buttons)}
+            {showNextQuestionButton && (
+              <div>
+                <button
+                  onClick={() => {
+                    nextQuestion(currentQuestionIndex);
+                    const updatedTime = {
+                      id: question?.id,
+                      time: 0,
+                    };
+                    const arr = [...time, updatedTime];
+                    setTime(arr);
+                    // reset();
+                  }}
+                  className="nextQuestionBtn btn"
+                >
+                  {appLocale.nextQuestionBtn}
+                </button>
+              </div>
+            )}
           </div>
-          {question && renderAnswers(question, buttons)}
-          {showNextQuestionButton && (
-            <div>
-              <button
-                onClick={() => {
-                  nextQuestion(currentQuestionIndex);
-                  const updatedTime = {
-                    id: question?.id,
-                    time: minutes * 60 + seconds + hours * 3600,
-                  };
-                  const arr = [...time, updatedTime]
-                  setTime(arr);
-                  reset();
-                }}
-                className="nextQuestionBtn btn"
-              >
-                {appLocale.nextQuestionBtn}
-              </button>
-            </div>
-          )}
+          <div
+            style={{
+              position: "absolute",
+              bottom: 0,
+              right: 0,
+              padding: "8px",
+            }}
+          >
+            watermark
+          </div>
         </div>
       )}
       {endQuiz &&

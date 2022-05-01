@@ -3,6 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import Quiz from "./lib/Quiz";
 import { baseURL } from "./constants";
 import { ques } from "./questions ";
+import { usePageVisibility } from "./lib/usePageVisibility";
 
 export const Wrapper = ({ isAuthorized }) => {
   const { id } = useParams();
@@ -10,6 +11,7 @@ export const Wrapper = ({ isAuthorized }) => {
   const [finalState, setFinalState] = useState({ data: [], loading: true });
   const [showAert, setShowAlert] = useState(false);
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+  const [tabSwitched, setTabSwitched] = useState(0);
 
   useEffect(() => {
     setFinalState({ data: ques, loading: false, attempt: 1 });
@@ -47,11 +49,21 @@ export const Wrapper = ({ isAuthorized }) => {
   // }, []);
   const [quizResult, setQuizResult] = useState(null);
 
+  const isVisible = usePageVisibility();
+
   useEffect(() => {
     if (!isAuthorized) {
       history.push("/sign-in");
     }
   }, [history, isAuthorized]);
+
+  useEffect(() => {
+    if (performance.navigation.type === 1) {
+      setTabSwitched((prev) => prev + 1);
+    } else {
+      console.log("This page is not reloaded");
+    }
+  },[]);
 
   const onEachQuestionChange = (value) => {
     return;
@@ -143,12 +155,13 @@ export const Wrapper = ({ isAuthorized }) => {
     return (
       <Quiz
         quiz={requestConvertor()}
-        shuffle={false}
+        shuffle={true}
         showInstantFeedback={false}
         continueTillCorrect={false}
         onComplete={setQuizResult}
         onEachQuestionChange={onEachQuestionChange}
         isShowTimer={true}
+        tabSwitched={isVisible}
         customResultPage={() => {
           console.log("HEllo");
         }}
@@ -164,7 +177,7 @@ export const Wrapper = ({ isAuthorized }) => {
           // backgroundImage: `url(/4.jpg)`,
           backgroundColor: "#fff",
           height: "calc(100vh + 40px)",
-          overflow :"hidden",
+          overflow: "hidden",
         }}
       >
         {showAert && (
