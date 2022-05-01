@@ -11,9 +11,8 @@ const Footer = () => {
 }
 
 const Wrapper = styled.footer`
-  ${'' /* max-height : 500px;
-  overflow :scroll ; */}
-  height: 3rem;
+  overflow :hidden ;
+  height: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,12 +20,12 @@ const Wrapper = styled.footer`
   background:  #18546e;
   text-align: center;
   span {
-    color: #fff;
+    color: whitesmoke;
   }
   h5 {
-    color: #fff;
+    color: whitesmoke;
     margin: 0.123rem;
-    font-weight: 100;
+    font-weight: normal;
     text-transform: none;
     line-height: 1;
   }

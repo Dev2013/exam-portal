@@ -12,7 +12,7 @@ export const Timer = ({
   });
 
   useEffect(() => {
-    if (minutes === 30) {
+    if (minutes === 45) {
       setEndQuiz(true);
       onComplete(questionSummary);
     }

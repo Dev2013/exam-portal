@@ -227,7 +227,8 @@ export const Wrapper = ({ isAuthorized }) => {
             flexDirection: "row",
             justifyContent: "left",
             alignItems: "left",
-            backgroundColor: " #fff",
+            backgroundColor:"fff",
+
             marginTop: "65px",
           }}
         >
